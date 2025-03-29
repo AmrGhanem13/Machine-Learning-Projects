@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa; /* Light gray-blue background */
+            color: #424242; /* Dark gray text */
+        }
+        header, footer {
+            background: linear-gradient(90deg, #00695c, #0288d1); /* Teal to blue gradient */
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        header h1, footer p {
+            margin: 0;
+        }
+        main {
+            padding: 20px;
+            text-align: center; /* Center-align all content in main */
+        }
+        .image-results {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .image-box {
+            text-align: center;
+            border: 2px solid #cfd8dc; /* Light gray border */
+            border-radius: 10px;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px; /* Fixed width for consistency */
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        h2 {
+            color: #00695c; /* Teal for headings */
+            margin: 10px 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        ul li {
+            font-size: 16px;
+            background: #e0f2f1; /* Light teal background */
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 5px;
+            color: #424242; /* Dark gray text */
+        }
+        a.upload-more {
+            display: inline-block;
+            margin: 20px auto; /* Center horizontally with auto margins */
+            color: white;
+            background-color: #0288d1; /* Blue link */
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        a.upload-more:hover {
+            background-color: #01579b; /* Darker blue on hover */
+        }
+        .social-links {
+            margin-top: 10px;
+        }
+        .social-links a {
+            margin: 0 15px;
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .social-links a:hover {
+            color: #b0bec5; /* Light gray-blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Analysis Results</h1>
+    </header>
+    <main>
+        <div class="image-results">
+            {% for path in result_paths %}
+            <div class="image-box">
+                <h2>Original Image</h2>
+                <img src="{{ path.input }}" alt="Original Image">
+                <h2>Processed Image</h2>
+                <img src="{{ path.output }}" alt="Processed Image">
+                <h2>Detected Classes</h2>
+                <ul>
+                    {% if path.classes %}
+                        {% for cls in path.classes %}
+                        <li>{{ cls }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No classes detected</li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="/" class="upload-more">Upload More Images</a>
+    </main>
+    <footer>
+        <p>© 2025 Liver Analysis Project. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/Amr.Ghanem13/" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://x.com/AlexanderRay_7" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/amr-ghanem-306b392b9/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/amr.ghanem13/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/AmrGhanem13" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
